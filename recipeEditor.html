@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe Editor</title>
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <form id="recipe-editor-form">
+      <div id="recipe-title" class="editor-card">
+        <label for="recipe-title-value">Title</label>
+        <input
+          id="recipe-title-value"
+          name="recipe-title-value"
+          type="text"
+          placeholder="Enter your recipe title"
+        />
+      </div>
+      <div id="recipe-cover">
+        <img id="recipe-cover-img" src="" alt="recipe-cover-img" />
+        <input type="file" id="recipe-img-upload" accept="image/*" />
+      </div>
+      <div id="recipe-rating" class="editor-card">
+        <fieldset>
+          <legend>Rating</legend>
+          <input type="radio" id="star5" name="rating" value="5" />
+          <label for="star5" title="5 stars">★</label>
+
+          <input type="radio" id="star4" name="rating" value="4" />
+          <label for="star4" title="4 stars">★</label>
+
+          <input type="radio" id="star3" name="rating" value="3" />
+          <label for="star3" title="3 stars">★</label>
+
+          <input type="radio" id="star2" name="rating" value="2" />
+          <label for="star2" title="2 stars">★</label>
+
+          <input type="radio" id="star1" name="rating" value="1" />
+          <label for="star1" title="1 star">★</label>
+        </fieldset>
+      </div>
+      <div id="recipe-tags" class="editor-card">
+        <div id="adding-tag-btn" class="adding-btn"></div>
+      </div>
+      <div id="recipe-prep-time" class="editor-card">
+        <label for="prep-time-value">Prep Time</label>
+        <input
+          type="number"
+          id="prep-time-value"
+          name="prep-time-value"
+          min="0"
+          placeholder="e.g., 15"
+        />
+      </div>
+      <div id="recipe-cook-time" class="editor-card">
+        <label for="cook-time-value">Cook Time</label>
+        <input
+          type="number"
+          id="cook-time-value"
+          name="cook-time-value"
+          min="0"
+          placeholder="e.g., 15"
+        />
+      </div>
+      <div id="recipe-description" class="editor-card">
+        <label for="recipe-description-value">Description</label>
+        <textarea
+          id="recipe-description-value"
+          name="recipe-description-value"
+          placeholder="Enter your recipe description"
+        />
+      </div>
+      <div id="recipe-ingredients" class="editor-list">
+        <div
+          id="adding-ingredient-btn"
+          class="adding-btn"
+          onclick="addIngredientItem"
+        ></div>
+      </div>
+      <div id="recipe-instructions" class="editor-list">
+        <div
+          id="adding-instruction-btn"
+          class="adding-btn"
+          onclick="addInstructionItem"
+        ></div>
+      </div>
+      <button type="reset">Reset Form</button>
+      <button type="submit" onclick="saveRecipe">Save</button>
+    </form>
+  </body>
+</html>
