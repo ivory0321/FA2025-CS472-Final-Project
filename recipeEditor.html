@@ -8,85 +8,119 @@
   </head>
   <body>
     <form id="recipe-editor-form">
-      <div id="recipe-title" class="editor-card">
-        <label for="recipe-title-value">Title</label>
-        <input
-          id="recipe-title-value"
-          name="recipe-title-value"
-          type="text"
-          placeholder="Enter your recipe title"
-        />
-      </div>
-      <div id="recipe-cover">
-        <img id="recipe-cover-img" src="" alt="recipe-cover-img" />
-        <input type="file" id="recipe-img-upload" accept="image/*" />
-      </div>
-      <div id="recipe-rating" class="editor-card">
-        <fieldset>
-          <legend>Rating</legend>
-          <input type="radio" id="star5" name="rating" value="5" />
-          <label for="star5" title="5 stars">★</label>
+      <div class="flex">
+        <div id="left-panel">
+          <div id="recipe-title" class="editor-card">
+            <div class="card-padding"></div>
+            <div class="card-content">
+              <h3>Title</h3>
+              <input
+                id="recipe-title-value"
+                name="recipe-title-value"
+                type="text"
+                placeholder="Enter your recipe title"
+              />
+            </div>
+          </div>
+          <div id="recipe-rating" class="editor-card">
+            <div class="card-padding"></div>
+            <div class="card-content">
+              <h3>Rating</h3>
+              <fieldset>
+                <input type="radio" id="star5" name="rating" value="1" />
+                <label for="star5" title="5 stars">★</label>
 
-          <input type="radio" id="star4" name="rating" value="4" />
-          <label for="star4" title="4 stars">★</label>
+                <input type="radio" id="star4" name="rating" value="2" />
+                <label for="star4" title="4 stars">★</label>
 
-          <input type="radio" id="star3" name="rating" value="3" />
-          <label for="star3" title="3 stars">★</label>
+                <input type="radio" id="star3" name="rating" value="3" />
+                <label for="star3" title="3 stars">★</label>
 
-          <input type="radio" id="star2" name="rating" value="2" />
-          <label for="star2" title="2 stars">★</label>
+                <input type="radio" id="star2" name="rating" value="4" />
+                <label for="star2" title="2 stars">★</label>
 
-          <input type="radio" id="star1" name="rating" value="1" />
-          <label for="star1" title="1 star">★</label>
-        </fieldset>
-      </div>
-      <div id="recipe-tags" class="editor-card">
-        <div id="adding-tag-btn" class="adding-btn"></div>
-      </div>
-      <div id="recipe-prep-time" class="editor-card">
-        <label for="prep-time-value">Prep Time</label>
-        <input
-          type="number"
-          id="prep-time-value"
-          name="prep-time-value"
-          min="0"
-          placeholder="e.g., 15"
-        />
-      </div>
-      <div id="recipe-cook-time" class="editor-card">
-        <label for="cook-time-value">Cook Time</label>
-        <input
-          type="number"
-          id="cook-time-value"
-          name="cook-time-value"
-          min="0"
-          placeholder="e.g., 15"
-        />
-      </div>
-      <div id="recipe-description" class="editor-card">
-        <label for="recipe-description-value">Description</label>
-        <textarea
-          id="recipe-description-value"
-          name="recipe-description-value"
-          placeholder="Enter your recipe description"
-        />
+                <input type="radio" id="star1" name="rating" value="5" />
+                <label for="star1" title="1 star">★</label>
+              </fieldset>
+            </div>
+          </div>
+          <div id="recipe-tags" class="editor-card">
+            <div class="card-padding"></div>
+            <div class="card-content">
+              <h3>Tags</h3>
+              <div id="adding-tag-btn" class="adding-btn"></div>
+              <div id="tag-list"></div>
+            </div>
+          </div>
+          <div id="time-flex">
+            <div id="recipe-prep-time" class="editor-card">
+              <div class="card-padding"></div>
+              <div class="card-content">
+                <h3>Prep Time</h3>
+                <input
+                  type="number"
+                  id="prep-time-value"
+                  name="prep-time-value"
+                  min="0"
+                  placeholder="e.g., 15"
+                />
+              </div>
+            </div>
+            <div id="recipe-cook-time" class="editor-card">
+              <div class="card-padding"></div>
+              <div class="card-content">
+                <h3>Cook Time</h3>
+                <input
+                  type="number"
+                  id="cook-time-value"
+                  name="cook-time-value"
+                  min="0"
+                  placeholder="e.g., 15"
+                />
+              </div>
+            </div>
+          </div>
+          <div id="recipe-description" class="editor-card">
+            <div class="card-padding"></div>
+            <div class="card-content">
+              <h3>Description</h3>
+              <textarea
+                id="recipe-description-value"
+                name="recipe-description-value"
+                placeholder="Enter your recipe description"
+              >
+              </textarea>
+            </div>
+          </div>
+        </div>
+        <div id="right-panel">
+          <div id="recipe-cover">
+            <img id="recipe-cover-img" alt="recipe-cover-img" />
+            <input id="recipe-img-upload" type="file" accept="image/*" />
+          </div>
+        </div>
       </div>
       <div id="recipe-ingredients" class="editor-list">
+        <h3 class="list-title" id="ingredient-title">Ingredients</h3>
         <div
           id="adding-ingredient-btn"
           class="adding-btn"
-          onclick="addIngredientItem"
+          onclick="addIngredientToHTML"
         ></div>
+        <div id="ingredient-list"></div>
       </div>
       <div id="recipe-instructions" class="editor-list">
+        <h3 class="list-title" id="instruction-title">Instructions</h3>
         <div
           id="adding-instruction-btn"
           class="adding-btn"
-          onclick="addInstructionItem"
+          onclick="addInstructionToHTML"
         ></div>
+        <div id="instruction-list"></div>
       </div>
       <button type="reset">Reset Form</button>
       <button type="submit" onclick="saveRecipe">Save</button>
     </form>
+    <script src="recipeEditor.js"></script>
   </body>
 </html>
