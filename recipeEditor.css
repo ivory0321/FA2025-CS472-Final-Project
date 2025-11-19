@@ -3,22 +3,25 @@ html {
 }
 
 body {
+  margin: 0;
   background-color: rgb(229, 228, 228);
   color: rgb(120, 118, 118);
-  margin: 0px;
+}
+
+div h3 {
+  margin: 0 0 5px 0;
+}
+
+h3:not([class="list-title"]) {
+  font-size: 16px;
 }
 
 input,
 textarea,
 fieldset {
+  border: none;
   font-size: 20px;
   color: rgb(68, 67, 67);
-  border: none;
-}
-
-input[type="text"] {
-  padding-block: 1px;
-  padding-inline: 2px;
 }
 
 .flex {
@@ -32,14 +35,26 @@ input[type="text"] {
   flex: 1.6;
 }
 
-#left-panel .editor-card {
-  width: 100%;
+#right-panel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.editor-card {
-  background-color: white;
-  display: flex;
-  flex-direction: row;
+#recipe-cover {
+  width: 90%;
+}
+
+#recipe-cover-img {
+  width: 100%;
+  margin-left: auto;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+#recipe-img-upload {
+  display: none;
 }
 
 .editor-card,
@@ -50,15 +65,33 @@ input[type="text"] {
   margin-bottom: 8px;
 }
 
+.editor-card {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+}
+
+#left-panel .editor-card {
+  width: 100%;
+}
+
 .card-padding {
   width: 7px;
   background-color: rgb(125, 216, 125);
 }
 
+#recipe-ingredients .editor-card .card-padding {
+  background-color: orange;
+}
+
+#recipe-instructions .editor-card .card-padding {
+  background-color: rgb(108, 219, 182);
+}
+
 .card-content {
+  flex: 1;
   background-color: white;
   padding-left: 15px;
-  flex: 1;
 }
 
 #tag-list {
@@ -71,9 +104,9 @@ input[type="text"] {
   height: 30px;
   background-color: rgb(168, 167, 167);
   color: white;
+  border-radius: 5px;
   box-sizing: border-box;
   text-align: center;
-  border-radius: 5px;
 }
 
 #time-flex {
@@ -83,22 +116,7 @@ input[type="text"] {
 
 #recipe-cook-time,
 #recipe-prep-time {
-  flex: 1 1 0%;
-}
-
-#recipe-cover {
-  width: 90%;
-}
-
-#recipe-cover-img {
-  width: 100%;
-  margin-left: auto;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-}
-
-#recipe-img-upload {
-  display: none;
+  flex: 1;
 }
 
 #ingredient-title {
@@ -106,23 +124,14 @@ input[type="text"] {
   box-sizing: border-box;
 }
 
+#instruction-title {
+  background-color: rgb(108, 219, 182);
+  box-sizing: border-box;
+}
+
 .list-title {
   color: white;
-  padding: 5px 0px 5px 10px;
-}
-
-div h3 {
-  margin: 0px 0px 5px;
-}
-
-h3 {
-  display: block;
-  font-size: 1.17em;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  font-weight: bold;
+  padding: 5px 0 5px 10px;
 }
 
 .editor-list .editor-card .card-content {
@@ -130,29 +139,24 @@ h3 {
 }
 
 .delete-btn {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: right;
-  color: rgb(82, 82, 82);
+  color: #525252;
   font-size: 20px;
   padding-right: 15px;
+  transition: transform 0.3s ease;
   transform-origin: right center;
-  flex: 1 1 0%;
-  transition: transform 0.3s;
 }
 
 .delete-btn:hover {
+  transform: scale(1.2);
   color: #000;
-  transform: scale(1.1);
 }
 
 .delete-btn::before {
   content: "×";
-}
-
-#instruction-title {
-  background-color: rgb(108, 219, 182);
-  box-sizing: border-box;
 }
 
 #display-rating {
