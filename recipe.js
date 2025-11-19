@@ -9,6 +9,7 @@ recipe={
     servings:undefined,
     ingredients:[],
     instructions:[],
+    tags:[], //list of strings
 }
 
 ingredient={
