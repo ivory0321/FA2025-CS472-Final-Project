@@ -212,18 +212,22 @@ button,
 .two-column-layout {
   display: flex;         /* put left and right next to each other */
   gap: 24px;
-  align-items: flex-start;
+  align-items: stretch;  /* make columns equal height */
   margin-top: 16px;
 }
 
 /* Left main content column (about 2/3 width) */
 .main-column {
   flex: 2;
+  display: flex;
+  flex-direction: column;  /* so inner content flows top-down */
 }
 
 /* Right sidebar column (about 1/3 width) */
 .sidebar-column {
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Make details/summary look nicer */
