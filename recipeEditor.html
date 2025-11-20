@@ -7,7 +7,7 @@
     <link href="recipeEditor.css" rel="stylesheet" />
   </head>
   <body>
-    <form id="recipe-editor-form">
+    <form id="recipe-editor-form" class="container">
       <div class="flex">
         <div id="left-panel">
           <div id="recipe-title" class="editor-card">
@@ -47,8 +47,13 @@
           <div id="recipe-tags" class="editor-card">
             <div class="card-padding"></div>
             <div class="card-content">
-              <h3>Tags</h3>
-              <div id="adding-tag-btn" class="adding-btn"></div>
+              <div class="flex-space-between">
+                <h3>Tags</h3>
+                <div
+                  id="adding-tag-btn"
+                  class="adding-btn adding-btn-dark"
+                ></div>
+              </div>
               <div id="tag-list"></div>
             </div>
           </div>
@@ -57,26 +62,32 @@
               <div class="card-padding"></div>
               <div class="card-content">
                 <h3>Prep Time</h3>
-                <input
-                  type="number"
-                  id="prep-time-value"
-                  name="prep-time-value"
-                  min="0"
-                  placeholder="e.g., 15"
-                />
+                <p>
+                  <input
+                    type="number"
+                    id="prep-time-value"
+                    name="prep-time-value"
+                    min="0"
+                    placeholder="e.g., 15"
+                  />
+                  min
+                </p>
               </div>
             </div>
             <div id="recipe-cook-time" class="editor-card">
               <div class="card-padding"></div>
               <div class="card-content">
                 <h3>Cook Time</h3>
-                <input
-                  type="number"
-                  id="cook-time-value"
-                  name="cook-time-value"
-                  min="0"
-                  placeholder="e.g., 15"
-                />
+                <p>
+                  <input
+                    type="number"
+                    id="cook-time-value"
+                    name="cook-time-value"
+                    min="0"
+                    placeholder="e.g., 15"
+                  />
+                  min
+                </p>
               </div>
             </div>
           </div>
@@ -101,21 +112,31 @@
         </div>
       </div>
       <div id="recipe-ingredients" class="editor-list">
-        <h3 class="list-title" id="ingredient-title">Ingredients</h3>
         <div
-          id="adding-ingredient-btn"
-          class="adding-btn"
-          onclick="addIngredientToHTML"
-        ></div>
+          class="title-card flex-space-between title-card-padding"
+          id="ingredient-title-btn"
+        >
+          <h3 class="list-title" id="ingredient-title">Ingredients</h3>
+          <div
+            id="adding-ingredient-btn"
+            class="adding-btn adding-btn-light"
+            onclick="addIngredientToHTML"
+          ></div>
+        </div>
         <div id="ingredient-list"></div>
       </div>
       <div id="recipe-instructions" class="editor-list">
-        <h3 class="list-title" id="instruction-title">Instructions</h3>
         <div
-          id="adding-instruction-btn"
-          class="adding-btn"
-          onclick="addInstructionToHTML"
-        ></div>
+          class="title-card flex-space-between title-card-padding"
+          id="instruction-title-btn"
+        >
+          <h3 class="list-title" id="instruction-title">Instructions</h3>
+          <div
+            id="adding-instruction-btn"
+            class="adding-btn adding-btn-light"
+            onclick="addInstructionToHTML"
+          ></div>
+        </div>
         <div id="instruction-list"></div>
       </div>
       <button type="reset">Reset Form</button>

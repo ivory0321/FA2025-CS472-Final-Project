@@ -9,11 +9,16 @@ body {
 }
 
 div h3 {
-  margin: 0 0 5px 0;
+  margin: 0;
+  padding: 0;
 }
 
 h3:not([class="list-title"]) {
   font-size: 16px;
+}
+
+p {
+  margin: 0 0;
 }
 
 input,
@@ -22,13 +27,25 @@ fieldset {
   border: none;
   font-size: 20px;
   color: rgb(68, 67, 67);
+  field-sizing: content;
+  resize: none;
+  font-family: "Inter", "Roboto", sans-serif;
+}
+
+.container {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .flex {
   display: flex;
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
+}
+
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #left-panel {
@@ -58,11 +75,9 @@ fieldset {
 }
 
 .editor-card,
-.list-title {
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 8px;
+.title-card {
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .editor-card {
@@ -91,7 +106,15 @@ fieldset {
 .card-content {
   flex: 1;
   background-color: white;
-  padding-left: 15px;
+  padding: 8px 15px 8px 15px;
+}
+
+.list-title {
+  color: white;
+}
+
+.title-card-padding {
+  padding: 8px 15px 8px 15px;
 }
 
 #tag-list {
@@ -100,13 +123,46 @@ fieldset {
   gap: 10px;
 }
 
+.recipe-tag {
+  position: relative;
+}
+
 .tag-input {
+  position: relative;
   height: 30px;
   background-color: rgb(168, 167, 167);
   color: white;
   border-radius: 5px;
   box-sizing: border-box;
+  padding: 0 8px;
   text-align: center;
+}
+
+.delete-tag-btn::before {
+  content: "×";
+}
+
+.delete-tag-btn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 18px;
+  height: 18px;
+  background-color: #dbd9d9;
+  color: rgb(107, 107, 107);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.delete-tag-btn:hover {
+  transform: scale(1.1);
+  background-color: #1d1d1d;
+  color: #fff;
 }
 
 #time-flex {
@@ -119,35 +175,43 @@ fieldset {
   flex: 1;
 }
 
-#ingredient-title {
+#ingredient-title-btn {
   background-color: orange;
   box-sizing: border-box;
 }
 
-#instruction-title {
+#instruction-title-btn {
   background-color: rgb(108, 219, 182);
   box-sizing: border-box;
 }
 
-.list-title {
-  color: white;
-  padding: 5px 0 5px 10px;
+.adding-btn::before {
+  content: "+";
 }
 
-.editor-list .editor-card .card-content {
-  display: flex;
+.adding-btn {
+  font-size: 30px;
+  transition: transform 0.3s ease;
+  line-height: 1;
+}
+
+.adding-btn-light {
+  color: #fff;
+}
+
+.adding-btn-dark {
+  color: rgb(120, 118, 118);
+}
+
+.adding-btn:hover {
+  transform: scale(1.2);
 }
 
 .delete-btn {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: right;
   color: #525252;
   font-size: 20px;
-  padding-right: 15px;
   transition: transform 0.3s ease;
-  transform-origin: right center;
+  line-height: 1;
 }
 
 .delete-btn:hover {
@@ -191,4 +255,16 @@ fieldset {
 
 #display-rating input[type="radio"]:checked + label {
   color: #ffd700;
+}
+
+.ingerdient-name-input {
+  width: 160px;
+}
+
+.ingerdient-amount-input {
+  width: 50px;
+}
+
+.ingerdient-unit-input {
+  width: 80px;
 }

@@ -198,12 +198,6 @@ function loadTagsToHTML(curRecipe) {
   const tagsContainer = document.getElementById("tag-list");
   tagsContainer.innerHTML = "";
 
-  tagsContainer.addEventListener("input", function (e) {
-    if (e.target.classList.contains("tag-input")) {
-      adjustInputWidth(e.target);
-    }
-  });
-
   if (curRecipe.tags && Array.isArray(curRecipe.tags)) {
     curRecipe.tags.forEach((tag) => {
       const tagDiv = document.createElement("div");
@@ -215,8 +209,6 @@ function loadTagsToHTML(curRecipe) {
       tagInput.className = "tag-input";
       tagInput.value = tag;
       tagDiv.appendChild(tagInput);
-
-      adjustInputWidth(tagInput);
 
       const deleteBtn = document.createElement("div");
       deleteBtn.className = "delete-tag-btn";
@@ -233,22 +225,10 @@ function loadTagsToHTML(curRecipe) {
 function loadIngredientsToHTML(curRecipe) {
   const ingredientsContainer = document.getElementById("ingredient-list");
   ingredientsContainer.innerHTML = "";
-  ingredientsContainer.addEventListener("input", function (e) {
-    if (e.target.classList.contains("ingerdient-amount-input")) {
-      adjustInputWidth(e.target);
-    }
-  });
 
   curRecipe.ingredients.forEach((ingredient) => {
     const ingredientDiv = createIngredientDiv(ingredient);
     ingredientsContainer.appendChild(ingredientDiv);
-
-    const quantityInput = ingredientDiv.querySelector(
-      ".ingerdient-amount-input"
-    );
-    if (quantityInput) {
-      adjustInputWidth(quantityInput);
-    }
   });
 }
 
@@ -275,29 +255,33 @@ function createIngredientDiv(ingerdient) {
   ingredientDiv.appendChild(paddingDiv);
 
   const contentDiv = document.createElement("div");
-  contentDiv.className = "card-content";
+  contentDiv.className = "card-content flex-space-between";
   ingredientDiv.appendChild(contentDiv);
+
+  const inputDiv = document.createElement("div");
+  inputDiv.className = "ingredient-inputs";
+  contentDiv.appendChild(inputDiv);
 
   const nameInput = document.createElement("input");
   nameInput.type = "text";
   nameInput.placeholder = "Ingredient name";
   nameInput.className = "ingerdient-name-input inline-input";
   nameInput.value = ingerdient.name || "";
-  contentDiv.appendChild(nameInput);
+  inputDiv.appendChild(nameInput);
 
   const quantityInput = document.createElement("input");
   quantityInput.type = "number";
   quantityInput.min = "0";
   quantityInput.className = "ingerdient-amount-input inline-input";
   quantityInput.value = ingerdient.quantity || "";
-  contentDiv.appendChild(quantityInput);
+  inputDiv.appendChild(quantityInput);
 
   const unitInput = document.createElement("input");
   unitInput.type = "text";
   unitInput.placeholder = "Unit";
   unitInput.className = "ingredient-unit-input inline-input";
   unitInput.value = ingerdient.unit || "";
-  contentDiv.appendChild(unitInput);
+  inputDiv.appendChild(unitInput);
 
   const deleteBtn = document.createElement("div");
   deleteBtn.className = "delete-btn";
@@ -316,7 +300,7 @@ function createInstructionDiv(instruction) {
   instructionDiv.appendChild(paddingDiv);
 
   const contentDiv = document.createElement("div");
-  contentDiv.className = "card-content";
+  contentDiv.className = "card-content flex-space-between";
   instructionDiv.appendChild(contentDiv);
 
   const textarea = document.createElement("textarea");
@@ -331,25 +315,4 @@ function createInstructionDiv(instruction) {
   contentDiv.appendChild(deleteBtn);
 
   return instructionDiv;
-}
-
-function adjustInputWidth(input) {
-  const minWidth = 30; // Minimum width
-  const padding = 16; // Approximate padding (adjust as needed)
-
-  // Create temporary span to measure text
-  const measure = document.createElement("span");
-  measure.style.visibility = "hidden";
-  measure.style.position = "absolute";
-  measure.style.font = getComputedStyle(input).font;
-  measure.style.whiteSpace = "pre"; // Preserve spaces
-  measure.textContent = input.value || input.placeholder || " ";
-
-  document.body.appendChild(measure);
-  const textWidth = measure.offsetWidth;
-  document.body.removeChild(measure);
-
-  // Calculate new width
-  const newWidth = Math.max(textWidth + padding, minWidth);
-  input.style.width = newWidth + "px";
 }
