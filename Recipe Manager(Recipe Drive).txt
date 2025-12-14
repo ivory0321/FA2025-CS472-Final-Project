@@ -1,11 +1,18 @@
 Recipe Manager(Recipe Drive)
 
 1. Upload Recipe - parse txt file with fetch() and import as recipe object. Save in localStorage 
+
 2. Recipe Browser - browse recipe uploaded, folder view? list view? add Like, add tag, etc (like GDrive)
+	- return : ID of recipe selected (to session Storage)
+
 3. Recipe Display(viewer) - when recipe chosen in browser, view recipe in certain form. (pretty print)
+	- param: ID of recipe selected (from session Storage)
 4. Recipe Editor - open previously uploaded recipe and edit(as object) OR create blank recipe as a new one
+	- param: ID of recipe selected if null, new recipe (from session Storage)
+	- 
 5. Community uploaded Recipe - search recipes by other ppl! download recipe into user's local storage --> visible on recipe browser
 -> similar to WP post page. 
+	- load recipes from local Storage, 
 6. Ingredients checkout - choose 1 or more recipe and organize all ingredients /equipments needed for reicpe (for shopping list)
 7. What should i eat  - list view from Monday to Sunday, randomly pick 7 recipes and display them. (open in Recipe Browser)
 
@@ -19,3 +26,6 @@ recipe object
 - difficulty?
 - list of ingredients (paired with #, unit) (i.e. olive oil, 3, tbsp)
 - list of instructions (do not change order) just list of text
+
+user object
+- userRecipes[]
